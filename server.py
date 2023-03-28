@@ -13,7 +13,7 @@ from flask_login import LoginManager
 from forms.works import WorksLogForm
 from forms.user import RegisterForm
 from data import db_session
-from resources import users_resources
+from resources import users_resources, jobs_resources
 
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'secret_key'
@@ -24,6 +24,8 @@ api = Api(app)
 
 api.add_resource(users_resources.UsersListResource, '/api/v2/users')
 api.add_resource(users_resources.UsersResource, '/api/v2/users/<int:users_id>')
+api.add_resource(jobs_resources.JobsListResource, '/api/v2/jobs')
+api.add_resource(jobs_resources.JobsResource, '/api/v2/jobs/<int:jobs_id>')
 
 login_manager = LoginManager()
 login_manager.init_app(app)

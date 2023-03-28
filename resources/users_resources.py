@@ -57,7 +57,7 @@ class UsersListResource(Resource):
         users.id = args['id']
         users.name = args['name']
         users.email = args['email']
-        users.hashed_password = users.set_password(args['hashed_password'])
+        users.hashed_password = args['hashed_password']
         users.about = args['about']
         session.add(users)
         session.commit()
